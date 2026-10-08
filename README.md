@@ -27,6 +27,8 @@ Learnova is a study execution workspace built as a small monorepo. The `frontend
 
 5. Visit [http://localhost:3000](http://localhost:3000). The dashboard opens in demo mode so you can explore without API credentials. The API docs are at [http://localhost:8000/docs](http://localhost:8000/docs).
 
+In GitHub Codespaces, keep the frontend and API terminals running. The frontend proxies API calls through `/api/backend`, so `API_INTERNAL_URL=http://127.0.0.1:8000` reaches the API from the Codespace server. Open forwarded port 3000 for the app; port 8000 is the API.
+
 ## Repository map
 
 ```text
@@ -49,17 +51,20 @@ learnova-os/
 
 - Dashboard navigation for AI Roadmap, Study Chamber, Tracksy, College Exam Study, and Counselor & Resume.
 - Study timer with a tab visibility penalty that only runs during an active session.
-- Optional webcam preview (browser permission required).
-- Roadmap and Tracksy math endpoints, with a demo workspace that still renders if the API is offline.
-- OAuth provider configuration ready for credentials.
+- Optional webcam preview (browser permission required), YouTube Data API search, and browser speech for tutor lessons.
+- Syllabus PDF text extraction and topic study blocks.
+- Roadmap generation, adaptive capacity, counselor check-ins, and Tracksy score endpoints.
+- OAuth provider configuration and demo access.
 
-The demo counselor, roadmap content, video recommendations, and resume preview are sample UI data. Connect Gemini, YouTube Data API, persistent PostgreSQL storage, and a PDF parser before using these as production features. Camera preview is not gaze detection; head tracking needs a separate computer-vision model and explicit user consent.
+Roadmaps, syllabus topic extraction, tutor lessons, and counselor replies use Gemini when `GEMINI_API_KEY` is configured, with a local fallback when it is not. YouTube search needs a `YOUTUBE_API_KEY` in `backend/.env`; without it, the app offers a direct YouTube search link. Study sessions and Tracksy entries are saved in this browser's local storage, not PostgreSQL. Camera preview is not gaze detection; head tracking needs a separate computer-vision model and explicit user consent.
 
 The frontend uses the Next.js App Router and Tailwind CSS 4 for the styling pipeline; the dashboard's visual system is kept in `frontend/app/globals.css` so you can tune it in one place.
 
 ## Configure OAuth
 
-Copy `frontend/.env.example` to `frontend/.env.local`, add provider credentials, and set `AUTH_SECRET`. For local OAuth callbacks, register `http://localhost:3000/api/auth/callback/google`, `/microsoft-entra-id`, and `/apple` with the providers you enable. The login screen only shows providers with complete credentials. Apple also needs its provider-specific key and team setup.
+Copy `frontend/.env.example` to `frontend/.env.local`, add provider credentials, and set `AUTH_SECRET`. For local OAuth callbacks, register `http://localhost:3000/api/auth/callback/google`, `/microsoft-entra-id`, and `/apple` with the providers you enable. The login gateway always shows all three providers; they are disabled until their credentials are set. Use Quick Login as Demo Student to explore without OAuth. Apple also needs its provider-specific key and team setup.
+
+For YouTube search, copy `backend/.env.example` to `backend/.env`, add a YouTube Data API key, and restart FastAPI. The exam parser handles text-based PDFs; scanned pages need OCR.
 
 ## Deployment
 
