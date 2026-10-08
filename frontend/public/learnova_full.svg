@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="52" viewBox="0 0 260 52" fill="none">
+  <rect x="1" y="1" width="50" height="50" rx="15" fill="#142A35" stroke="#326174" stroke-width="2"/>
+  <path d="M10 24.5c0-7.4 9.6-11 14.8-5.5L27 21l2.2-2c5.2-5.5 14.8-1.9 14.8 5.5 0 2.9-1.2 5.1-3.6 7.2L27 43 13.6 31.7c-2.4-2.1-3.6-4.3-3.6-7.2Z" stroke="#72DEEA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 26h6l2.5 4 4.5-9 3.5 6H38" stroke="#A8F3EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="63" y="26" fill="#EDF4F7" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="-1">learnova</text>
+  <text x="64" y="40" fill="#7D91A4" font-family="Arial,sans-serif" font-size="7.5" font-weight="700" letter-spacing="1.5">COGNITIVE EXECUTION OS</text>
+</svg>

@@ -218,3 +218,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Learnova app additions
+# JavaScript / Next.js
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/*.py[cod]
+.venv/
+
+# Editors and operating system files
+.DS_Store
+.vscode/*

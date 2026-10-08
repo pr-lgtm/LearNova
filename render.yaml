@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: learnova-api
+    runtime: docker
+    rootDir: backend
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: FRONTEND_ORIGIN
+        sync: false
