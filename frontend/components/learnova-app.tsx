@@ -34,7 +34,7 @@ function RoadmapContent({ modules, focusHours, onBuild, onStart }: { modules: Mo
   return <>
     <div className="welcome-row">
       <div><p className="eyebrow">YOUR DASHBOARD</p><h1>Your learning, <span>in motion.</span></h1><p className="muted">Small, focused steps add up. Let’s make today count.</p></div>
-      <button className="button-primary" onClick={onBuild}>＋ Build my roadmap</button>
+      <button className="button-primary" onClick={() => onBuild()}>＋ Build my roadmap</button>
     </div>
     <div className="stats-grid">
       <article className="stat-card"><span className="stat-icon cyan">◷</span><p className="stat-label">Focus logged</p><strong>{focusHours.toFixed(1)} <small>hrs total</small></strong><span className="stat-foot">From your saved sessions</span></article>
@@ -51,7 +51,7 @@ function RoadmapContent({ modules, focusHours, onBuild, onStart }: { modules: Mo
           const state = module.state ?? (progress > 0 ? "In progress" : "Up next");
           return <div className="module-row" key={`${module.title}-${index}`}><div className={`module-number ${progress === 100 ? "done" : ""}`}>{progress === 100 ? "✓" : `0${index + 1}`}</div><div className="module-copy"><div className="module-title-line"><strong>{module.title}</strong><span className={`pill ${state === "In progress" ? "active" : ""}`}>{state}</span></div><span className="muted small">{detail}</span><div className="progress-track"><span style={{ width: `${progress}%` }}/></div></div></div>;
         })}</div>
-        <button className="button-quiet" onClick={onBuild}>Edit learning goal <span>→</span></button>
+        <button className="button-quiet" onClick={() => onBuild()}>Edit learning goal <span>→</span></button>
       </section>
       <section className="panel today-panel">
         <div className="panel-heading"><div><p className="eyebrow">YOUR NEXT STEP</p><h2>Start with 25 minutes</h2></div><span className="live-dot"/></div>
