@@ -326,6 +326,6 @@ export default function LearnovaApp() {
       <div className="page-content">{section === "roadmap" && <RoadmapContent modules={modules} focusHours={activities.reduce((sum, item) => sum + item.focusHours, 0)} onBuild={(domain) => { setBuilderDomain(domain ?? "Tech & Data"); setBuilderOpen(true); }} onStart={() => setSection("chamber")}/ >}{section === "chamber" && <StudyChamber onPenalty={countPenalty} totalSwitches={tabSwitches}/ >}{section === "tracksy" && <Tracksy tabSwitches={tabSwitches} activities={activities} onLog={saveActivity}/ >}{section === "exam" && <ExamWorkspace/>}{section === "counselor" && <CounselorResume tabSwitches={tabSwitches} activities={activities}/>}</div>
       <footer className="app-footer"><span>© 2026 Learnova OS</span><span>Made for steady progress <b>✦</b></span><button onClick={leave}>Sign out</button></footer>
     </main>
-    {builderOpen && <RoadmapBuilder initialDomain={builderDomain} onClose={() => setBuilderOpen(false)} onResult={(result) => setModules(result.modules.map((item, index) => ({ ...item, detail: `${item.estimated_hours} estimated hours`, state: index === 0 ? "In progress" : "Up next", progress: 0 })))}/>}
+    {builderOpen && <RoadmapBuilder initialDomain={builderDomain} onClose={() => setBuilderOpen(false)} onResult={(result) => setModules(result.modules.map((item, index) => ({ ...item, detail: `${(item.estimated_hours ?? ((item.base_hours ?? 5) * (1 - (item.prior_knowledge ?? 0)))).toFixed(1)} estimated hours`, state: index === 0 ? "In progress" : "Up next", progress: 0 })))}/>}
   </div>;
 }
